@@ -18,7 +18,7 @@ app.post('/ask', async (req, res) => {
       max_tokens: 100,
       temperature: 0.7,
     }, {
-      headers: { 'Authorization': 'Bearer YOUR_API_KEY' }
+      headers: { 'Authorization': 'Bearer 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' }
     });
 
     const answer = response.data.choices[0].text.trim();
