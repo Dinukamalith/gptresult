@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Answering Website</title>
+</head>
+<body>
+  <h1>Question Answering Website</h1>
+  <input type="text" id="questionInput" placeholder="Enter your question">
+  <button onclick="askQuestion()">Ask</button>
+  <div id="answerContainer"></div>
+
+  <script>
+    async function askQuestion() {
+      const question = document.getElementById('questionInput').value;
+
+      // Make a request to the backend server
+      const response = await fetch('/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+      });
+
+      const data = await response.json();
+
+      // Display the answer on the page
+      document.getElementById('answerContainer').innerText = data.answer;
+    }
+  </script>
+</body>
+</html>
